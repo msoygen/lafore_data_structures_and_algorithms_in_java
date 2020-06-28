@@ -91,7 +91,7 @@ class HighArrayApp {
       arr.insert(33);
 
       System.out.println("Array:");
-      arr.display(); // display items again
+      arr.display(); 
 
       long maxVal = arr.removeMax();
       if (maxVal == -1)
@@ -100,7 +100,7 @@ class HighArrayApp {
          System.out.println("\nMax value deleted.\nDeleted max value: " + maxVal + "\n");
 
       System.out.println("Array:");
-      arr.display(); // display items again
+      arr.display();
 
    } // end main()
 } // end class HighArrayApp

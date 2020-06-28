@@ -58,13 +58,15 @@ class HighArray {
    }
    // -----------------------------------------------------------
 
-   public long getMax() {
+   public long removeMax() {
       long maxVal = -1;
 
       for (int i = 0; i < nElems; i++) {
          if (a[i] > maxVal)
             maxVal = a[i];
       }
+
+      delete(maxVal);
 
       return maxVal;
    }
@@ -88,14 +90,20 @@ class HighArrayApp {
       arr.insert(66);
       arr.insert(33);
 
-      System.out.println("Array: ");
-      arr.display(); // display items
+      System.out.println("Array:");
+      arr.display(); 
 
-      long maxVal = arr.getMax();
-      if (maxVal == -1)
-         System.out.println("\nArray is empty\n");
-      else
-         System.out.println("\nMax value in the array is: " + maxVal + "\n");
+      HighArray invSortArr;
+      invSortArr = new HighArray(maxSize);
+
+      for (int i = 0; i < maxSize; i++) {
+         long maxVal = arr.removeMax();
+         if(maxVal != -1)
+            invSortArr.insert(maxVal);
+      }
+
+      System.out.println("Inversely sorted array:");
+      invSortArr.display();
 
    } // end main()
 } // end class HighArrayApp
