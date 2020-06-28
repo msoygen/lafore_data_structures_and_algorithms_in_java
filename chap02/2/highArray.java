@@ -58,13 +58,15 @@ class HighArray {
    }
    // -----------------------------------------------------------
 
-   public long getMax() {
+   public long removeMax() {
       long maxVal = -1;
 
       for (int i = 0; i < nElems; i++) {
          if (a[i] > maxVal)
             maxVal = a[i];
       }
+
+      delete(maxVal);
 
       return maxVal;
    }
@@ -88,14 +90,17 @@ class HighArrayApp {
       arr.insert(66);
       arr.insert(33);
 
-      System.out.println("Array: ");
+      System.out.println("Array:");
       arr.display(); // display items again
 
-      long maxVal = arr.getMax();
+      long maxVal = arr.removeMax();
       if (maxVal == -1)
          System.out.println("\nArray is empty\n");
       else
-         System.out.println("\nMax value in the array is: " + maxVal + "\n");
+         System.out.println("\nMax value deleted.\nDeleted max value: " + maxVal + "\n");
+
+      System.out.println("Array:");
+      arr.display(); // display items again
 
    } // end main()
 } // end class HighArrayApp
