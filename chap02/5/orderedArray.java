@@ -93,8 +93,8 @@ class OrdArray {
    // -----------------------------------------------------------
 
    public void merge(OrdArray source1, OrdArray source2) {
-      int source1Size = source1.size() + 1;
-      int source2Size = source2.size() + 1;
+      int source1Size = source1.size();
+      int source2Size = source2.size();
       int biggerSize, smallerSize;
 
       if (source1Size > source2Size) {
