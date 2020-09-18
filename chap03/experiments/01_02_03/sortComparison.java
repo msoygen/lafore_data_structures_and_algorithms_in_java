@@ -26,7 +26,7 @@ class ArrayBub {
 	// --------------------------------------------------------------
 	public void display() // displays array contents
 	{
-		for (int j = 0; j < nElems; j++) // for each element,
+		for (int j = 0; j < nElems; j++) // for each element
 			System.out.print(a[j] + " "); // display it
 		System.out.println("");
 	}
@@ -44,8 +44,6 @@ class ArrayBub {
 
 		long endTime = System.nanoTime();
 		long timeElapsed = endTime - startTime;
-		System.out
-				.println("\n********\nExecution time in milliseconds : " + (double) timeElapsed / 1000000.00 + "\n********\n");
 
 		return (double) timeElapsed / 1000000.00;
 	} // end bubbleSort()
@@ -110,8 +108,6 @@ class ArrayIns {
 
 		long endTime = System.nanoTime();
 		long timeElapsed = endTime - startTime;
-		System.out
-				.println("\n********\nExecution time in milliseconds : " + (double) timeElapsed / 1000000.00 + "\n********\n");
 
 		return (double) timeElapsed / 1000000.00;
 	} // end insertionSort()
@@ -166,8 +162,6 @@ class ArraySel {
 
 		long endTime = System.nanoTime();
 		long timeElapsed = endTime - startTime;
-		System.out
-				.println("\n********\nExecution time in milliseconds : " + (double) timeElapsed / 1000000.00 + "\n********\n");
 
 		return (double) timeElapsed / 1000000.00;
 	} // end selectionSort()
@@ -182,8 +176,9 @@ class ArraySel {
 } // end class ArraySel
 ////////////////////////////////////////////////////////////////
 
-class SortComparisonApp {
-	public static void main(String[] args) {
+class Sort {
+
+	public void randomlyInserted() {
 		int maxSize = 100;
 		List<Double> executionTimesBub = new ArrayList<Double>();
 		List<Double> executionTimesSel = new ArrayList<Double>();
@@ -210,19 +205,13 @@ class SortComparisonApp {
 		}
 
 		// bubble sort
-		arrBub.display();
 		executionTimesBub.add(arrBub.bubbleSort());
-		arrBub.display();
 
 		// selection sort
-		arrSel.display();
 		executionTimesSel.add(arrSel.selectionSort());
-		arrSel.display();
 
 		// insertion sort
-		arrIns.display();
 		executionTimesIns.add(arrIns.insertionSort());
-		arrIns.display();
 
 		maxSize = 10000;
 
@@ -242,19 +231,13 @@ class SortComparisonApp {
 		}
 
 		// bubble sort
-		arrBub.display();
 		executionTimesBub.add(arrBub.bubbleSort());
-		arrBub.display();
 
 		// selection sort
-		arrSel.display();
 		executionTimesSel.add(arrSel.selectionSort());
-		arrSel.display();
 
 		// insertion sort
-		arrIns.display();
 		executionTimesIns.add(arrIns.insertionSort());
-		arrIns.display();
 
 		maxSize = 100000;
 
@@ -274,22 +257,16 @@ class SortComparisonApp {
 		}
 
 		// bubble sort
-		arrBub.display();
 		executionTimesBub.add(arrBub.bubbleSort());
-		arrBub.display();
 
 		// selection sort
-		arrSel.display();
 		executionTimesSel.add(arrSel.selectionSort());
-		arrSel.display();
 
 		// insertion sort
-		arrIns.display();
 		executionTimesIns.add(arrIns.insertionSort());
-		arrIns.display();
 
 		// print execution times
-		System.out.println("\nExecution times in miliseconds:\n");
+		System.out.println("\nExecution times in miliseconds for random data:\n");
 		System.out.println("100 items");
 		System.out.println("---------------------------------------------------------------");
 		System.out.println("bubble sort: " + executionTimesBub.get(0) + "\nselection sort: " + executionTimesSel.get(0)
@@ -307,6 +284,234 @@ class SortComparisonApp {
 		System.out.println("bubble sort: " + executionTimesBub.get(2) + "\nselection sort: " + executionTimesSel.get(2)
 				+ "\ninsertion sort: " + executionTimesIns.get(2));
 		System.out.println("---------------------------------------------------------------\n");
+	}
+
+	public void inverselySorted() {
+		int maxSize = 100;
+		List<Double> executionTimesBub = new ArrayList<Double>();
+		List<Double> executionTimesSel = new ArrayList<Double>();
+		List<Double> executionTimesIns = new ArrayList<Double>();
+
+		// array references
+		ArrayBub arrBub;
+		ArraySel arrSel;
+		ArrayIns arrIns;
+
+		// intializing objects with 100 items
+		arrBub = new ArrayBub(maxSize);
+		arrSel = new ArraySel(maxSize);
+		arrIns = new ArrayIns(maxSize);
+
+		for (int i = maxSize; i > 0; i--)
+		// fill array with inversely sorted data
+		{
+			arrBub.insert(i);
+			arrSel.insert(i);
+			arrIns.insert(i);
+		}
+
+		// bubble sort
+		executionTimesBub.add(arrBub.bubbleSort());
+
+		// selection sort
+		executionTimesSel.add(arrSel.selectionSort());
+
+		// insertion sort
+		executionTimesIns.add(arrIns.insertionSort());
+
+		maxSize = 10000;
+
+		// intializing objects with 10 000 items
+		arrBub = new ArrayBub(maxSize);
+		arrSel = new ArraySel(maxSize);
+		arrIns = new ArrayIns(maxSize);
+
+		for (int i = maxSize; i > 0; i--)
+		// fill array with inversely sorted data
+		{
+			arrBub.insert(i);
+			arrSel.insert(i);
+			arrIns.insert(i);
+		}
+
+		// bubble sort
+		executionTimesBub.add(arrBub.bubbleSort());
+
+		// selection sort
+		executionTimesSel.add(arrSel.selectionSort());
+
+		// insertion sort
+		executionTimesIns.add(arrIns.insertionSort());
+
+		maxSize = 100000;
+
+		// intializing objects with 100 000 items
+		arrBub = new ArrayBub(maxSize);
+		arrSel = new ArraySel(maxSize);
+		arrIns = new ArrayIns(maxSize);
+
+		for (int i = maxSize; i > 0; i--)
+		// fill array with inversely sorted data
+		{
+			arrBub.insert(i);
+			arrSel.insert(i);
+			arrIns.insert(i);
+		}
+
+		// bubble sort
+		executionTimesBub.add(arrBub.bubbleSort());
+
+		// selection sort
+		executionTimesSel.add(arrSel.selectionSort());
+
+		// insertion sort
+		executionTimesIns.add(arrIns.insertionSort());
+
+		// print execution times
+		System.out.println("\nExecution times in miliseconds for inversely sorted data:\n");
+		System.out.println("100 items");
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("bubble sort: " + executionTimesBub.get(0) + "\nselection sort: " + executionTimesSel.get(0)
+				+ "\ninsertion sort: " + executionTimesIns.get(0));
+		System.out.println("---------------------------------------------------------------\n");
+
+		System.out.println("10.000 items");
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("bubble sort: " + executionTimesBub.get(1) + "\nselection sort: " + executionTimesSel.get(1)
+				+ "\ninsertion sort: " + executionTimesIns.get(1));
+		System.out.println("---------------------------------------------------------------\n");
+
+		System.out.println("100.000 items");
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("bubble sort: " + executionTimesBub.get(2) + "\nselection sort: " + executionTimesSel.get(2)
+				+ "\ninsertion sort: " + executionTimesIns.get(2));
+		System.out.println("---------------------------------------------------------------\n");
+	}
+
+	public void sorted() {
+		int maxSize = 100;
+		List<Double> executionTimesBub = new ArrayList<Double>();
+		List<Double> executionTimesSel = new ArrayList<Double>();
+		List<Double> executionTimesIns = new ArrayList<Double>();
+
+		// array references
+		ArrayBub arrBub;
+		ArraySel arrSel;
+		ArrayIns arrIns;
+
+		// intializing objects with 100 items
+		arrBub = new ArrayBub(maxSize);
+		arrSel = new ArraySel(maxSize);
+		arrIns = new ArrayIns(maxSize);
+
+		for (int i = 0; i < maxSize; i++)
+		// fill array with sorted data
+		{
+			arrBub.insert(i);
+			arrSel.insert(i);
+			arrIns.insert(i);
+		}
+
+		// bubble sort
+		executionTimesBub.add(arrBub.bubbleSort());
+
+		// selection sort
+		executionTimesSel.add(arrSel.selectionSort());
+
+		// insertion sort
+		executionTimesIns.add(arrIns.insertionSort());
+
+		maxSize = 10000;
+
+		// intializing objects with 10 000 items
+		arrBub = new ArrayBub(maxSize);
+		arrSel = new ArraySel(maxSize);
+		arrIns = new ArrayIns(maxSize);
+
+		for (int i = 0; i < maxSize; i++)
+		// fill array with sorted data
+		{
+			arrBub.insert(i);
+			arrSel.insert(i);
+			arrIns.insert(i);
+		}
+
+		// bubble sort
+		executionTimesBub.add(arrBub.bubbleSort());
+
+		// selection sort
+		executionTimesSel.add(arrSel.selectionSort());
+
+		// insertion sort
+		executionTimesIns.add(arrIns.insertionSort());
+
+		maxSize = 100000;
+
+		// intializing objects with 100 000 items
+		arrBub = new ArrayBub(maxSize);
+		arrSel = new ArraySel(maxSize);
+		arrIns = new ArrayIns(maxSize);
+
+		for (int i = 0; i < maxSize; i++)
+		// fill array with sorted data
+		{
+			arrBub.insert(i);
+			arrSel.insert(i);
+			arrIns.insert(i);
+		}
+
+		// bubble sort
+		executionTimesBub.add(arrBub.bubbleSort());
+
+		// selection sort
+		executionTimesSel.add(arrSel.selectionSort());
+
+		// insertion sort
+		executionTimesIns.add(arrIns.insertionSort());
+
+		// print execution times
+		System.out.println("\nExecution times in miliseconds for sorted data:\n");
+		System.out.println("100 items");
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("bubble sort: " + executionTimesBub.get(0) + "\nselection sort: " + executionTimesSel.get(0)
+				+ "\ninsertion sort: " + executionTimesIns.get(0));
+		System.out.println("---------------------------------------------------------------\n");
+
+		System.out.println("10.000 items");
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("bubble sort: " + executionTimesBub.get(1) + "\nselection sort: " + executionTimesSel.get(1)
+				+ "\ninsertion sort: " + executionTimesIns.get(1));
+		System.out.println("---------------------------------------------------------------\n");
+
+		System.out.println("100.000 items");
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("bubble sort: " + executionTimesBub.get(2) + "\nselection sort: " + executionTimesSel.get(2)
+				+ "\ninsertion sort: " + executionTimesIns.get(2));
+		System.out.println("---------------------------------------------------------------\n");
+	}
+}
+
+class SortComparisonApp {
+	public static void main(String[] args) {
+		Sort sort = new Sort();
+		System.out.println("Randomly inserted array's sort started.");
+		sort.randomlyInserted();
+		System.out.println("Randomly inserted array's sort ended.\n");
+
+		System.out.println(".............................................\n");
+
+		System.out.println("Inversely inserted array's sort started.");
+		sort.inverselySorted();
+		System.out.println("Inversely inserted array's sort ended.\n");
+
+		System.out.println(".............................................\n");
+
+		System.out.println("Sorted array's sort started.");
+		sort.sorted();
+		System.out.println("Sorted array's sort ended.");
+
+		System.out.println(".............................................\n");
+
 	} // end main()
 } // end class SortComparisonApp
 ////////////////////////////////////////////////////////////////
